@@ -12,7 +12,8 @@ A boilerplate to start developing microservices.
 - [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) configured to generate some clients
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 - MySQL database with docker compose
-- [sqlacodegen](https://github.com/agronholm/sqlacodegen) a tool that reads the structure of an existing database and generates the appropriate SQLAlchemy model code 
+- [sqlacodegen](https://github.com/agronholm/sqlacodegen) a tool that reads the structure of an existing database and generates the appropriate SQLAlchemy model code
+- [pytest](https://docs.pytest.org/en/7.1.x/contents.html)
 
 ## API example
 Base path: [http://localhost:5001/api/v1/my_service](http://localhost:5001/api/v1/my_service)
