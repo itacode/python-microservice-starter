@@ -38,7 +38,14 @@ flask run
 
 ## Production server
 ```shell
+pipenv shell
 waitress-serve --port=5001 --call app:create_app
+```
+
+## Unit test
+```shell
+pipenv shell
+pytest
 ```
 
 ## OpenAPI generator
