@@ -29,12 +29,6 @@ It requires [pipenv](https://pipenv.pypa.io/en/latest/).
 pipenv install --dev
 ```
 
-## SQLAlchemy model code generation
-```shell
-pipenv run gen_sqlacode
-```
-
-
 ## Development server
 Start the development server with automatic reload.
 ```shell
@@ -55,4 +49,10 @@ docker-compose up -d --build
 Stop
 ```shell
 docker-compose down
+```
+
+## SQLAlchemy model code generation
+You need the database available to execute the following command
+```shell
+pipenv run gen_sqlacode
 ```
