@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: my_service
+  version: '1.0'
+  contact:
+    email: example@example.com
+  description: my_service
+servers:
+  - url: /api/v1/my_service
+paths:
+  /files:
+    get:
+      summary: List uploaded ﬁles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_files_res'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      operationId: app.api.controller.files_controller.get_files_name
+      description: List uploaded ﬁles
+      tags:
+        - files
+    post:
+      summary: Upload a ﬁle
+      operationId: app.api.controller.files_controller.upload_files
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/upload_files_name_req'
+      description: Upload a ﬁle
+      tags:
+        - files
+  '/files/{name}':
+    parameters:
+      - schema:
+          type: string
+        name: name
+        in: path
+        required: true
+    delete:
+      summary: Delete a ﬁle
+      operationId: app.api.controller.files_controller.delete_files_name
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+        - files
+      description: Delete a ﬁle
+  /health:
+    get:
+      summary: Health check
+      tags:
+        - system
+      responses:
+        '200':
+          description: OK
+      operationId: app.api.controller.health_controller.get_health
+      description: Health check
+components:
+  schemas:
+    get_files_res:
+      title: get_files_res
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            type: string
+      required:
+        - files
+    upload_files_name_req:
+      title: upload_files_name_req
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+      required:
+        - file
+tags:
+  - name: files
+  - name: system

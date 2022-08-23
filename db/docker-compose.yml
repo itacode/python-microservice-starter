@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./volume:/var/lib/mysql
+      - ./my_db.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - backend-net
+    env_file:
+      - ./.env
+    container_name: ${DB_CONTAINER_NAME}
+
+networks:
+  backend-net:

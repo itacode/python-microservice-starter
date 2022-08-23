@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+connexion = {extras = ["swagger-ui"], version = "*"}
+python-dotenv = "*"
+flask-cors = "*"
+flask-request-id-middleware = "*"
+flask-compress = "*"
+waitress = "*"
+sqlalchemy = "*"
+pymysql = "*"
+cryptography = "*"
+pandas = "*"
+
+[dev-packages]
+autopep8 = "*"
+pytest = "*"
+flake8 = "*"
+sqlacodegen = "*"
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+gen_sqlacode = "sqlacodegen mysql+pymysql://${MY_SERVICE_DB_USER}:${MY_SERVICE_DB_PASSWORD}@${MY_SERVICE_DB_HOST}:${MY_SERVICE_DB_PORT}/${MY_SERVICE_DB_NAME} --noinflect --outfile app/entities/orm/orm_model.py"
