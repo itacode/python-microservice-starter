@@ -11,7 +11,7 @@ _files_service = FilesService()
 
 
 def get_files_name():
-    result = _files_service.findFiles()
+    result = _files_service.find()
 
     return result
 
@@ -33,6 +33,7 @@ def upload_files():
 
 
 def delete_files_name(name: str):
-    _files_service.delete_files_name(name=name)
+    params = _files_service.DeleteByNameParams(name=name)
+    _files_service.delete_by_name(params=params)
 
     return "OK"
