@@ -74,6 +74,24 @@ paths:
           description: OK
       operationId: app.api.controller.health_controller.get_health
       description: Health check
+  /users:
+    get:
+      summary: List users
+      tags:
+        - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_users_res'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      operationId: app.api.controller.users_controller.get_users
+      description: List users
 components:
   schemas:
     get_files_res:
@@ -95,6 +113,43 @@ components:
           format: binary
       required:
         - file
+    user:
+      title: user
+      x-stoplight:
+        id: pwa75dx9rfdwn
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        is_deleted:
+          type: boolean
+        create_time:
+          type: string
+        update_time:
+          type: string
+      required:
+        - id
+        - username
+        - email
+        - is_deleted
+        - create_time
+        - update_time
+    get_users_res:
+      title: get_users_res
+      x-stoplight:
+        id: 1fnuvqpkl5ge8
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/user'
+  responses: {}
 tags:
   - name: files
   - name: system
+  - name: users
