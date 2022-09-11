@@ -41,7 +41,7 @@ def handle_application_error(e: ApplicationError):
 
 def handle_resource_conflict_error(e: ResourceConflictError):
     http_status = HTTPStatus.CONFLICT
-    logger.exception("parameter error.")
+    logger.exception("resource conflict error.")
     return (
         asdict(
             ResponseBase(
