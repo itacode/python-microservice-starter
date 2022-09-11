@@ -12,6 +12,12 @@ class ApplicationError(Exception):
     detail: Optional[str] = None
 
 
+class ResourceConflictError(ApplicationError):
+    """
+    Status code 409
+    """
+
+
 class ResourceNotFoundError(ApplicationError):
     """
     Status code 404

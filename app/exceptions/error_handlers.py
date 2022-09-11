@@ -8,6 +8,7 @@ from flask import Flask
 from app.common.logger import logger
 from app.exceptions.application_errors import (ApplicationError,
                                                ParameterError,
+                                               ResourceConflictError,
                                                ResourceNotFoundError)
 
 
@@ -17,6 +18,7 @@ class ResponseBase:
     status: Optional[str] = None
     title: Optional[str] = None
     type: Optional[str] = None
+    code: Optional[str] = None
 
 
 def extract_exception_message(e: Exception) -> str:
@@ -30,6 +32,21 @@ def handle_application_error(e: ApplicationError):
         asdict(
             ResponseBase(
                 detail=extract_exception_message(e),
+                title=http_status.phrase,
+            )
+        ),
+        http_status,
+    )
+
+
+def handle_resource_conflict_error(e: ResourceConflictError):
+    http_status = HTTPStatus.CONFLICT
+    logger.exception("parameter error.")
+    return (
+        asdict(
+            ResponseBase(
+                detail=extract_exception_message(e),
+                status=http_status,
                 title=http_status.phrase,
             )
         ),
@@ -84,6 +101,7 @@ def handle_exception(e: Exception):
 
 exception_to_handler = {
     ApplicationError: handle_application_error,
+    ResourceConflictError: handle_resource_conflict_error,
     ParameterError: handle_parameter_error,
     ResourceNotFoundError: handle_resource_not_found_error,
     Exception: handle_exception,
