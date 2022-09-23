@@ -4,7 +4,7 @@ from typing import Iterable
 from sqlalchemy import select
 
 import app.entities.orm.orm_model as orm
-from app.database import session_scope
+from app.database import Session
 from app.entities.user import User
 
 
@@ -14,7 +14,7 @@ class UsersService:
         users: list[User]
 
     def find(self) -> FindResult:
-        with session_scope() as session:
+        with Session.begin() as session:
             stmt = select(orm.User).where(orm.User.is_deleted == 0)
             orm_users: Iterable[orm.User] = session.scalars(stmt)
 
