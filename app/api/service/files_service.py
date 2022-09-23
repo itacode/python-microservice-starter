@@ -10,7 +10,7 @@ class FilesService:
     class FindResult:
         files: list[str]
 
-    def find(self):
+    def find(self) -> FindResult:
         upload_folder = app_config.AppConfig.UPLOAD_FOLDER
         files: list[str]
 
@@ -27,7 +27,7 @@ class FilesService:
     class DeleteByNameParams:
         name: str
 
-    def delete_by_name(self, params: DeleteByNameParams):
+    def delete_by_name(self, params: DeleteByNameParams) -> None:
         upload_folder = app_config.AppConfig.UPLOAD_FOLDER
         file_path = os.path.join(upload_folder, params.name)
 

@@ -1,7 +1,7 @@
 import traceback
 from dataclasses import asdict, dataclass
 from http import HTTPStatus
-from typing import Optional
+from typing import Callable, Optional, Type, Union
 
 from flask import Flask
 
@@ -15,7 +15,7 @@ from app.exceptions.application_errors import (ApplicationError,
 @dataclass()
 class ResponseBase:
     detail: Optional[str] = None
-    status: Optional[str] = None
+    status: Optional[int] = None
     title: Optional[str] = None
     type: Optional[str] = None
     code: Optional[str] = None
@@ -99,7 +99,7 @@ def handle_exception(e: Exception):
     )
 
 
-exception_to_handler = {
+exception_to_handler: dict[Union[Type[Exception], int], Callable] = {
     ApplicationError: handle_application_error,
     ResourceConflictError: handle_resource_conflict_error,
     ParameterError: handle_parameter_error,

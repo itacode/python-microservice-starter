@@ -13,7 +13,7 @@ class UsersService:
     class FindResult:
         users: list[User]
 
-    def find(self):
+    def find(self) -> FindResult:
         with session_scope() as session:
             stmt = select(orm.User).where(orm.User.is_deleted == 0)
             orm_users: Iterable[orm.User] = session.scalars(stmt)
