@@ -1,14 +1,8 @@
 {
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": [
-    "--max-line-length",
-    "150"
-  ],
-  "python.testing.pytestArgs": [
-    "tests"
-  ],
+  "python.linting.mypyEnabled": true,
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
-  "python.linting.mypyEnabled": true
+  "python.testing.pytestArgs": ["tests"]
 }
