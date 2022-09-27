@@ -1,13 +1,12 @@
 import os
-from dataclasses import dataclass
+
+from pydantic import BaseModel
 
 import app.config as app_config
 
 
 class FilesService:
-
-    @dataclass
-    class FindResult:
+    class FindResult(BaseModel):
         files: list[str]
 
     def find(self) -> FindResult:
@@ -23,8 +22,7 @@ class FilesService:
 
         return find_result
 
-    @dataclass
-    class DeleteByNameParams:
+    class DeleteByNameParams(BaseModel):
         name: str
 
     def delete_by_name(self, params: DeleteByNameParams) -> None:

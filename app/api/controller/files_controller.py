@@ -13,7 +13,7 @@ _files_service = FilesService()
 def get_files_name():
     result = _files_service.find()
 
-    return result
+    return result.dict()
 
 
 def upload_files():

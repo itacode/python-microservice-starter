@@ -1,6 +1,6 @@
-from dataclasses import dataclass
 from typing import Iterable
 
+from pydantic import BaseModel
 from sqlalchemy import select
 
 import app.entities.orm.orm_model as orm
@@ -9,8 +9,7 @@ from app.entities.user import User
 
 
 class UsersService:
-    @dataclass
-    class FindResult:
+    class FindResult(BaseModel):
         users: list[User]
 
     def find(self) -> FindResult:
@@ -20,13 +19,6 @@ class UsersService:
 
             users: list[User] = []
             for orm_user in orm_users:
-                users.append(User(
-                    id=orm_user.id,
-                    email=orm_user.email,
-                    username=orm_user.username,
-                    is_deleted=bool(orm_user.is_deleted),
-                    create_time=orm_user.create_time,
-                    update_time=orm_user.update_time
-                ))
+                users.append(User.from_orm(orm_user))
 
         return self.FindResult(users=users)
