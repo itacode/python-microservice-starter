@@ -10,11 +10,11 @@ flask-cors = "*"
 flask-request-id-middleware = "*"
 flask-compress = "*"
 waitress = "*"
-sqlalchemy = "*"
 pymysql = "*"
 cryptography = "*"
 pandas = "*"
 pydantic = "*"
+sqlalchemy = {extras = ["mypy"], version = "*"}
 
 [dev-packages]
 autopep8 = "*"

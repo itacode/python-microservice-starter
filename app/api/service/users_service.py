@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Iterable, cast
 
 from pydantic import BaseModel
 from sqlalchemy import select
@@ -15,7 +15,7 @@ class UsersService:
     def find(self) -> FindResult:
         with Session.begin() as session:
             stmt = select(orm.User).where(orm.User.is_deleted == 0)
-            orm_users: Iterable[orm.User] = session.scalars(stmt)
+            orm_users = cast(Iterable[orm.User], session.scalars(stmt))  # override ScalarResult type
 
             users: list[User] = []
             for orm_user in orm_users:
