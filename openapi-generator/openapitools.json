@@ -1,8 +1,8 @@
 {
-  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
   "spaces": 2,
   "generator-cli": {
-    "version": "6.0.1",
+    "version": "6.2.0",
     "generators": {
       "typescript-axios": {
         "generatorName": "typescript-axios",
@@ -10,7 +10,7 @@
         "output": "./clients/typescript-axios"
       },
       "python": {
-        "generatorName": "python",
+        "generatorName": "python-prior",
         "glob": "../app/openapi/api.oas.yml",
         "output": "./clients/python"
       }
