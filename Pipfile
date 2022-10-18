@@ -17,11 +17,11 @@ pydantic = "*"
 sqlalchemy = {extras = ["mypy"], version = "*"}
 
 [dev-packages]
-autopep8 = "*"
 pytest = "*"
 flake8 = "*"
 sqlacodegen = "*"
 mypy = "*"
+black = "*"
 
 [requires]
 python_version = "3.9"

@@ -6,10 +6,12 @@ from typing import Callable, Optional, Type, Union
 from flask import Flask
 
 from app.common.logger import logger
-from app.exceptions.application_errors import (ApplicationError,
-                                               ParameterError,
-                                               ResourceConflictError,
-                                               ResourceNotFoundError)
+from app.exceptions.application_errors import (
+    ApplicationError,
+    ParameterError,
+    ResourceConflictError,
+    ResourceNotFoundError,
+)
 
 
 @dataclass()

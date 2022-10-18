@@ -20,9 +20,9 @@ class AppConfig:
 
 class DBConfig:
     MY_SERVICE_DB_URL: str = (
-        f"mysql+pymysql://{getenv_or_raise('MY_SERVICE_DB_USER')}" +
-        f":{getenv_or_raise('MY_SERVICE_DB_PASSWORD')}" +
-        f"@{getenv_or_raise('MY_SERVICE_DB_HOST')}" +
-        f":{getenv_or_raise('MY_SERVICE_DB_PORT')}" +
-        f"/{getenv_or_raise('MY_SERVICE_DB_NAME')}"
+        f"mysql+pymysql://{getenv_or_raise('MY_SERVICE_DB_USER')}"
+        + f":{getenv_or_raise('MY_SERVICE_DB_PASSWORD')}"
+        + f"@{getenv_or_raise('MY_SERVICE_DB_HOST')}"
+        + f":{getenv_or_raise('MY_SERVICE_DB_PORT')}"
+        + f"/{getenv_or_raise('MY_SERVICE_DB_NAME')}"
     )

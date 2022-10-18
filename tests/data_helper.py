@@ -13,15 +13,28 @@ data_directory = os.path.join(os.path.dirname(__file__), "data")
 class DataHelper:
     """Helper to manage test data im the database"""
 
-    def __init__(self, connection_url: str = connection_url, data_directory: str = data_directory) -> None:
+    def __init__(
+        self, connection_url: str = connection_url, data_directory: str = data_directory
+    ) -> None:
         self.engine: Engine = create_engine(connection_url)
         self.data_base_dir = data_directory
 
-    def insert_from_csv(self, table_name: str, subdir_file_path: str, sep=",", quotechar='"', encoding="utf8"):
+    def insert_from_csv(
+        self,
+        table_name: str,
+        subdir_file_path: str,
+        sep=",",
+        quotechar='"',
+        encoding="utf8",
+    ):
         """Insert in a table the data read from a CSV file in a sudirectory of test data directory"""
         file_path = os.path.join(self.data_base_dir, subdir_file_path)
-        df = pd.read_csv(filepath_or_buffer=file_path, sep=sep,
-                         quotechar=quotechar, encoding=encoding)
+        df = pd.read_csv(
+            filepath_or_buffer=file_path,
+            sep=sep,
+            quotechar=quotechar,
+            encoding=encoding,
+        )
         df.to_sql(table_name, con=self.engine, index=False, if_exists="append")
 
     def truncate_table(self, table_name: str):

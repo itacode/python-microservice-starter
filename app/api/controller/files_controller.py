@@ -23,8 +23,8 @@ def upload_files():
         raise ParameterError("No file part")
     file = request.files["file"]
     # If the user does not select a file raises error
-    if file.filename == '':
-        raise ParameterError('No selected file')
+    if file.filename == "":
+        raise ParameterError("No selected file")
     if file:
         filename = secure_filename(file.filename)
         file.save(os.path.join(app_config.AppConfig.UPLOAD_FOLDER, filename))
