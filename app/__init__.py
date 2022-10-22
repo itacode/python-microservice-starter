@@ -23,7 +23,6 @@ def create_app():
     # Maximum file size after which an upload is aborted: 1MB
     flask_app.config["MAX_CONTENT_LENGTH"] = 1 * 1024 * 1024
     upload_folder = app_config.AppConfig.UPLOAD_FOLDER
-    print(upload_folder)
     if not os.path.exists(upload_folder):
         os.makedirs(upload_folder)
 

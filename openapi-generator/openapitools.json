@@ -10,7 +10,7 @@
         "output": "./clients/typescript-axios"
       },
       "python": {
-        "generatorName": "python-prior",
+        "generatorName": "python",
         "glob": "../app/openapi/api.oas.yml",
         "output": "./clients/python"
       }
