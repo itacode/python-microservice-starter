@@ -15,8 +15,7 @@ services:
       - ./files:/usr/src/my_service/files
     env_file:
       - ./.env
-    networks:
-      - backend
 
 networks:
-  backend:
+  default:
+    name: backend

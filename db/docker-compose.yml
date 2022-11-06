@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   my_service_db:
@@ -13,8 +13,7 @@ services:
     env_file:
       - ./.env
     container_name: ${DB_CONTAINER_NAME}
-    networks:
-      - backend
 
 networks:
-  backend:
+  default:
+    name: backend
