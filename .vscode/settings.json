@@ -1,10 +1,8 @@
 {
   "python.formatting.provider": "black",
-  "isort.args": ["--profile", "black"],
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true,
-  "python.testing.pytestArgs": ["tests"]
+  "python.testing.pytestEnabled": true
 }

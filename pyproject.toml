@@ -1,0 +1,17 @@
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+exclude = "(?x)(orm_model.py$)"
+ignore_missing_imports = true
+plugins = "sqlalchemy.ext.mypy.plugin"
+
+[tool.mypy-app.entities.orm.orm_model]
+follow_imports = "skip"
+
+[tool.pytest.ini_options]
+testpaths = "./tests"
+addopts = "-v"

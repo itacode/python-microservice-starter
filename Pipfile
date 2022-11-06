@@ -22,6 +22,7 @@ flake8 = "*"
 sqlacodegen = "*"
 mypy = "*"
 black = "*"
+isort = "*"
 
 [requires]
 python_version = "3.9"
