@@ -22,19 +22,17 @@ A boilerplate to start developing microservices.
 ## Installation
 Visual Studio Code is the recommended editor, please install the recommended extensions in `.vscode/extensions.json`.
 
-Install [pipenv](https://pipenv.pypa.io/en/latest/#install-pipenv-today):
-```shell
-pip install --user pipenv
-```
+Install [poetry](https://python-poetry.org/docs/#installation).
+
 Install required packages:
 ```shell
-pipenv install --dev
+poetry install --dev
 ```
 
 ## Development
 Start the development server with automatic reload:
 ```shell
-pipenv shell
+poetry shell
 flask run
 ```
 
@@ -50,16 +48,16 @@ cd db
 docker compose down
 ```
 
-### Unit test
+### Generate ORM models
 ```shell
-pipenv shell
-pytest
+poetry shell
+python -m scripts.gen_sqlacode
 ```
 
-### SQLAlchemy model code generation
-Execute the following command with the database available:
+### Unit test
 ```shell
-pipenv run gen_sqlacode
+poetry shell
+pytest
 ```
 
 ### OpenAPI generator
@@ -86,6 +84,5 @@ docker compose down
 
 ## Production server
 ```shell
-pipenv shell
-waitress-serve --port=5001 --call app:create_app
+poetry run python server.py
 ```

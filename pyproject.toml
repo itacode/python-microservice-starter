@@ -1,3 +1,38 @@
+[tool.poetry]
+name = "python-microservice-starter"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+connexion = {extras = ["swagger-ui"], version = "^2.14.1"}
+python-dotenv = "^0.21.0"
+flask-cors = "^3.0.10"
+flask-request-id-middleware = "^1.1"
+flask-compress = "^1.13"
+waitress = "^2.1.2"
+pymysql = "^1.0.2"
+cryptography = "^38.0.3"
+pandas = "^1.5.1"
+pydantic = "^1.10.2"
+sqlalchemy = {extras = ["mypy"], version = "^1.4.43"}
+paste = "^3.5.2"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^5.0.4"
+black = "^22.10.0"
+isort = "^5.10.1"
+mypy = "^0.982"
+sqlacodegen = "^2.3.0"
+pytest = "^7.2.0"
+types-waitress = "^2.1.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length = 120
 
