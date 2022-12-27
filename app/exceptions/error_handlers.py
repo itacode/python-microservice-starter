@@ -92,7 +92,7 @@ def handle_exception(e: Exception):
     return (
         asdict(
             ResponseBase(
-                detail=str(e),
+                detail=repr(e),
                 status=http_status,
                 title=http_status.phrase,
             )
