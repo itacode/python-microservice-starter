@@ -1,18 +1,23 @@
 FROM python:3.9
 
-RUN apt-get update && apt-get upgrade -y
-RUN python -m pip install --upgrade pip
+RUN apt-get update && \
+apt-get upgrade -y && \
+python -m pip install --upgrade pip
 
 WORKDIR /usr/src/my_service
-
 COPY app app/
 COPY server.py .
 COPY .env .
 COPY pyproject.toml .
 COPY poetry.lock .
-RUN pip install poetry==1.3
-RUN poetry install
+RUN pip install poetry==1.3 && \
+poetry export -f requirements.txt --output requirements.txt && \
+pip install -r requirements.txt
+
+RUN groupadd -g 999 apiuser && \
+useradd -r -u 999 -g apiuser apiuser
+USER apiuser
 
 EXPOSE 5001
 
-CMD poetry run python server.py
+CMD python server.py
