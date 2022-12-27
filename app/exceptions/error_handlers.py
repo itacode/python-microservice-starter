@@ -1,4 +1,3 @@
-import traceback
 from dataclasses import asdict, dataclass
 from http import HTTPStatus
 from typing import Callable, Optional, Type, Union
@@ -23,18 +22,16 @@ class ResponseBase:
     code: Optional[str] = None
 
 
-def extract_exception_message(e: Exception) -> str:
-    return traceback.format_exception_only(type(e), e)[-1].rstrip("\n")
-
-
 def handle_application_error(e: ApplicationError):
     http_status = HTTPStatus.INTERNAL_SERVER_ERROR
     logger.exception("application error.")
     return (
         asdict(
             ResponseBase(
-                detail=extract_exception_message(e),
+                detail=str(e),
+                status=http_status,
                 title=http_status.phrase,
+                code=e.code,
             )
         ),
         http_status,
@@ -47,9 +44,10 @@ def handle_resource_conflict_error(e: ResourceConflictError):
     return (
         asdict(
             ResponseBase(
-                detail=extract_exception_message(e),
+                detail=str(e),
                 status=http_status,
                 title=http_status.phrase,
+                code=e.code,
             )
         ),
         http_status,
@@ -62,9 +60,10 @@ def handle_parameter_error(e: ParameterError):
     return (
         asdict(
             ResponseBase(
-                detail=extract_exception_message(e),
+                detail=str(e),
                 status=http_status,
                 title=http_status.phrase,
+                code=e.code,
             )
         ),
         http_status,
@@ -77,9 +76,10 @@ def handle_resource_not_found_error(e: ResourceNotFoundError):
     return (
         asdict(
             ResponseBase(
-                detail=extract_exception_message(e),
+                detail=str(e),
                 status=http_status,
                 title=http_status.phrase,
+                code=e.code,
             )
         ),
         http_status,
@@ -92,7 +92,7 @@ def handle_exception(e: Exception):
     return (
         asdict(
             ResponseBase(
-                detail=extract_exception_message(e),
+                detail=str(e),
                 status=http_status,
                 title=http_status.phrase,
             )
