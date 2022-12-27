@@ -1,6 +1,6 @@
 FROM python:3.9
 
-RUN apt-get update && apt-get Upgrade -y
+RUN apt-get update && apt-get upgrade -y
 RUN python -m pip install --upgrade pip
 
 WORKDIR /usr/src/my_service
