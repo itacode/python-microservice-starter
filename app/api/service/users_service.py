@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from sqlalchemy import select
 
 import app.entities.orm.orm_model as orm
-from app.database import Session
+from app.database import db_session
 from app.entities.user import User
 
 
@@ -13,7 +13,7 @@ class UsersService:
         users: list[User]
 
     def find(self) -> FindResult:
-        with Session.begin() as session:
+        with db_session.begin() as session:
             stmt = select(orm.User).where(orm.User.is_deleted == 0)
             orm_users = cast(
                 Iterable[orm.User], session.scalars(stmt)
