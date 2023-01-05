@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
 from app.config import DBConfig
@@ -13,9 +13,7 @@ data_directory = os.path.join(os.path.dirname(__file__), "data")
 class DataHelper:
     """Helper to manage test data im the database"""
 
-    def __init__(
-        self, connection_url: str = connection_url, data_directory: str = data_directory
-    ) -> None:
+    def __init__(self, connection_url: str = connection_url, data_directory: str = data_directory) -> None:
         self.engine: Engine = create_engine(connection_url)
         self.data_base_dir = data_directory
 
@@ -38,17 +36,14 @@ class DataHelper:
         df.to_sql(table_name, con=self.engine, index=False, if_exists="append")
 
     def truncate_table(self, table_name: str):
-        con = self.engine.connect()
-        con.execute(f"TRUNCATE TABLE {table_name}")
-        con.close()
+        with self.engine.begin() as con:
+            con.execute(f"TRUNCATE TABLE {table_name}")
 
     def delete_rows(self, table_name: str, ids: list[int]):
         ids_joined = ",".join([str(i) for i in ids])
-        con = self.engine.connect()
-        con.execute(f"DELETE FROM {table_name} WHERE id in ({ids_joined})")
-        con.close()
+        with self.engine.begin() as con:
+            con.execute(f"DELETE FROM {table_name} WHERE id in ({ids_joined})")
 
     def delete_all_rows(self, table_name: str):
-        con = self.engine.connect()
-        con.execute(f"DELETE FROM {table_name}")
-        con.close()
+        with self.engine.begin() as con:
+            con.execute(text(f"DELETE FROM {table_name}"))
