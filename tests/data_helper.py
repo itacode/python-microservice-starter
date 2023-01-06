@@ -33,16 +33,17 @@ class DataHelper:
             quotechar=quotechar,
             encoding=encoding,
         )
-        df.to_sql(table_name, con=self.engine, index=False, if_exists="append")
+        with self.engine.begin() as con:
+            df.to_sql(table_name, con=con, index=False, if_exists="append")
 
     def truncate_table(self, table_name: str):
         with self.engine.begin() as con:
-            con.execute(f"TRUNCATE TABLE {table_name}")
+            con.execute(text(f"TRUNCATE TABLE {table_name}"))
 
     def delete_rows(self, table_name: str, ids: list[int]):
         ids_joined = ",".join([str(i) for i in ids])
         with self.engine.begin() as con:
-            con.execute(f"DELETE FROM {table_name} WHERE id in ({ids_joined})")
+            con.execute(text(f"DELETE FROM {table_name} WHERE id in ({ids_joined})"))
 
     def delete_all_rows(self, table_name: str):
         with self.engine.begin() as con:
