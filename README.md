@@ -48,12 +48,6 @@ cd db
 docker compose down
 ```
 
-### Generate ORM models
-```shell
-poetry shell
-python -m scripts.gen_sqlacode
-```
-
 ### Unit test
 ```shell
 poetry shell

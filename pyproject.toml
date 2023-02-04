@@ -17,7 +17,7 @@ pymysql = "^1.0.2"
 cryptography = "^38.0.3"
 pandas = "^1.5.1"
 pydantic = "^1.10.2"
-sqlalchemy = {extras = ["mypy"], version = "^1.4.43"}
+sqlalchemy = {extras = ["mypy"], version = "^2.0.1"}
 paste = "^3.5.2"
 
 [tool.poetry.group.dev.dependencies]
@@ -25,7 +25,6 @@ flake8 = "^5.0.4"
 black = "^22.10.0"
 isort = "^5.10.1"
 mypy = "^0.982"
-sqlacodegen = "^2.3.0"
 pytest = "^7.2.0"
 types-waitress = "^2.1.4.1"
 
