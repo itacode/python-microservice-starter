@@ -17,16 +17,16 @@ pymysql = "^1.0.2"
 cryptography = "^38.0.3"
 pandas = "^1.5.1"
 pydantic = "^1.10.2"
-sqlalchemy = {extras = ["mypy"], version = "^2.0.1"}
 paste = "^3.5.2"
+sqlalchemy = "^2.0.4"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^5.0.4"
 black = "^22.10.0"
 isort = "^5.10.1"
-mypy = "^0.982"
 pytest = "^7.2.0"
 types-waitress = "^2.1.4.1"
+mypy = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -41,7 +41,6 @@ profile = "black"
 [tool.mypy]
 exclude = "(?x)(orm_model.py$)"
 ignore_missing_imports = true
-plugins = "sqlalchemy.ext.mypy.plugin"
 
 [tool.mypy-app.entities.orm.orm_model]
 follow_imports = "skip"
