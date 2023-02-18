@@ -41,9 +41,6 @@ profile = "black"
 [tool.mypy]
 ignore_missing_imports = true
 
-[tool.mypy-app.entities.orm.orm_model]
-follow_imports = "skip"
-
 [tool.pytest.ini_options]
 testpaths = "./tests"
 addopts = "-v"
