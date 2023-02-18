@@ -39,7 +39,6 @@ line-length = 120
 profile = "black"
 
 [tool.mypy]
-exclude = "(?x)(orm_model.py$)"
 ignore_missing_imports = true
 
 [tool.mypy-app.entities.orm.orm_model]
