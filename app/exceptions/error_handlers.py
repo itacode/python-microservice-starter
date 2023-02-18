@@ -28,7 +28,7 @@ def handle_application_error(e: ApplicationError):
     return (
         asdict(
             ResponseBase(
-                detail=str(e),
+                detail=repr(e),
                 status=http_status,
                 title=http_status.phrase,
                 code=e.code,
@@ -44,7 +44,7 @@ def handle_resource_conflict_error(e: ResourceConflictError):
     return (
         asdict(
             ResponseBase(
-                detail=str(e),
+                detail=repr(e),
                 status=http_status,
                 title=http_status.phrase,
                 code=e.code,
@@ -60,7 +60,7 @@ def handle_parameter_error(e: ParameterError):
     return (
         asdict(
             ResponseBase(
-                detail=str(e),
+                detail=repr(e),
                 status=http_status,
                 title=http_status.phrase,
                 code=e.code,
@@ -76,7 +76,7 @@ def handle_resource_not_found_error(e: ResourceNotFoundError):
     return (
         asdict(
             ResponseBase(
-                detail=str(e),
+                detail=repr(e),
                 status=http_status,
                 title=http_status.phrase,
                 code=e.code,

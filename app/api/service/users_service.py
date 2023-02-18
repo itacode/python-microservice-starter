@@ -15,9 +15,7 @@ class UsersService:
     def find(self) -> FindResult:
         with db_session.begin() as session:
             stmt = select(orm.User).where(orm.User.is_deleted == 0)
-            orm_users = cast(
-                Iterable[orm.User], session.scalars(stmt)
-            )  # override ScalarResult type
+            orm_users = session.scalars(stmt)
 
             users: list[User] = []
             for orm_user in orm_users:
