@@ -1,3 +1,4 @@
+import logging
 import os
 
 import connexion
@@ -9,8 +10,10 @@ from flask_request_id import RequestID
 import app.config as app_config
 from app.exceptions.error_handlers import register_error_handlers
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
-def create_app():
+
+def create_app() -> Flask:
     connexion_app = connexion.App(__name__, specification_dir="./openapi")
     flask_app: Flask = connexion_app.app
 
