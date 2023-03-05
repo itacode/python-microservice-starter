@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 from flask import request
 from werkzeug.utils import secure_filename
@@ -27,7 +27,7 @@ def upload_files():
         raise ParameterError("No selected file")
     if file:
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app_config.AppConfig.UPLOAD_FOLDER, filename))
+        file.save(Path(app_config.AppConfig.UPLOAD_FOLDER, filename))
 
         return "OK"
 

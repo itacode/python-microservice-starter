@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from pydantic import BaseModel
 
@@ -27,7 +28,7 @@ class FilesService:
 
     def delete_by_name(self, params: DeleteByNameParams) -> None:
         upload_folder = app_config.AppConfig.UPLOAD_FOLDER
-        file_path = os.path.join(upload_folder, params.name)
+        file_path = Path(upload_folder, params.name)
 
-        if os.path.exists(file_path):
-            os.remove(file_path)
+        if file_path.exists():
+            file_path.unlink()
