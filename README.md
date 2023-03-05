@@ -17,6 +17,7 @@ A boilerplate to start developing microservices.
 - Unit test framework [pytest](https://docs.pytest.org/en/7.1.x/contents.html)
 - Linter [Flake8](https://flake8.pycqa.org/en/latest/)
 - Code formatter [Black](https://black.readthedocs.io/en/stable/)
+- Imports sorter [isort](https://pycqa.github.io/isort/)
 - Static type checker [Mypy](http://mypy-lang.org/)
 
 ## Installation
@@ -26,7 +27,7 @@ Install [poetry](https://python-poetry.org/docs/#installation).
 
 Install required packages:
 ```shell
-poetry install --dev
+poetry install
 ```
 
 ## Development
