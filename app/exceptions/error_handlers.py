@@ -113,5 +113,5 @@ exception_to_handler: dict[Union[Type[Exception], int], Callable] = {
 
 
 def register_error_handlers(app: Flask):
-    for (exception, handler) in exception_to_handler.items():
+    for exception, handler in exception_to_handler.items():
         app.register_error_handler(exception, handler)
