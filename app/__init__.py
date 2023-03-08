@@ -7,7 +7,7 @@ from flask_compress import Compress
 from flask_cors import CORS
 from flask_request_id import RequestID
 
-import app.config as app_config
+from app.config import settings
 from app.exceptions.error_handlers import register_error_handlers
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -25,7 +25,7 @@ def create_app() -> Flask:
     # https://flask.palletsprojects.com/en/2.1.x/patterns/fileuploads/
     # Maximum file size after which an upload is aborted: 1MB
     flask_app.config["MAX_CONTENT_LENGTH"] = 1 * 1024 * 1024
-    upload_folder = app_config.AppConfig.UPLOAD_FOLDER
+    upload_folder = settings.UPLOAD_FOLDER
     if not os.path.exists(upload_folder):
         os.makedirs(upload_folder)
 

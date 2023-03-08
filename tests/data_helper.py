@@ -4,9 +4,9 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
-from app.config import DBConfig
+from app.config import settings
 
-connection_url = DBConfig.MY_SERVICE_DB_URL
+connection_url = settings.get_db_url()
 data_directory = os.path.join(os.path.dirname(__file__), "data")
 
 
