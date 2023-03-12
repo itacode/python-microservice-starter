@@ -12,7 +12,6 @@ A boilerplate to start developing microservices.
 - Openapi generator [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) configured to generate clients
 - MySQL database with docker compose
 - ORM [SQLAlchemy](https://www.sqlalchemy.org/)
-- Tool [sqlacodegen](https://github.com/agronholm/sqlacodegen) that reads the structure of an existing database and generates the appropriate SQLAlchemy model code
 - Data validator [Pydantic](https://pydantic-docs.helpmanual.io/)
 - Unit test framework [pytest](https://docs.pytest.org/en/7.1.x/contents.html)
 - Linter [Flake8](https://flake8.pycqa.org/en/latest/)
