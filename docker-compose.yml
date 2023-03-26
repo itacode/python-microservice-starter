@@ -6,7 +6,7 @@ services:
   my_service:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: ${CONTAINER_NAME}
     restart: always
     ports:
