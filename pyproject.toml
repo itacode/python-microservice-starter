@@ -8,7 +8,7 @@ packages = [{ include = "app" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-connexion = {extras = ["swagger-ui"], version = "^2.14.2"}
+connexion = {extras = ["flask", "swagger-ui"], version = "^2.14.2"}
 python-dotenv = "^1.0.0"
 flask-cors = "^3.0.10"
 flask-request-id-middleware = "^1.1"
@@ -28,7 +28,7 @@ black = "^23.1.0"
 isort = "^5.10.1"
 pytest = "^7.2.0"
 types-waitress = "^2.1.4.1"
-mypy = "^1.0.1"
+pyright = "^1.1.333"
 
 [build-system]
 requires = ["poetry-core"]
@@ -39,10 +39,6 @@ line-length = 120
 
 [tool.isort]
 profile = "black"
-
-[tool.mypy]
-ignore_missing_imports = true
-plugins = ["pydantic.mypy"]
 
 [tool.pytest.ini_options]
 testpaths = "./tests"
