@@ -27,8 +27,6 @@ flake8 = "^6.0.0"
 black = "^23.1.0"
 isort = "^5.10.1"
 pytest = "^7.2.0"
-types-waitress = "^2.1.4.1"
-pyright = "^1.1.333"
 
 [build-system]
 requires = ["poetry-core"]
