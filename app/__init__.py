@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(level
 
 
 def create_app() -> Flask:
-    connexion_app = connexion.FlaskApp(__name__, specification_dir="./openapi")
+    connexion_app = connexion.FlaskApp(__name__, specification_dir="./openapi/")
     flask_app: Flask = connexion_app.app
 
     connexion_app.add_api("api.oas.yml", validate_responses=False)
