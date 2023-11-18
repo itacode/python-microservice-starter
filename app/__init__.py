@@ -15,12 +15,15 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(level
 
 def create_app() -> Flask:
     connexion_app = connexion.FlaskApp(__name__, specification_dir="./openapi/")
-    flask_app: Flask = connexion_app.app
-
     connexion_app.add_api("api.oas.yml", validate_responses=False)
 
+    flask_app: Flask = connexion_app.app
     CORS(flask_app)
     Compress(flask_app)
+    # Add a header named "X-Request-ID"
+    RequestID(flask_app)
+
+    register_error_handlers(flask_app)
 
     # https://flask.palletsprojects.com/en/2.1.x/patterns/fileuploads/
     # Maximum file size after which an upload is aborted: 1MB
@@ -28,10 +31,5 @@ def create_app() -> Flask:
     upload_folder = settings.UPLOAD_FOLDER
     if not os.path.exists(upload_folder):
         os.makedirs(upload_folder)
-
-    # Add a header named "X-Request-ID"
-    RequestID(flask_app)
-
-    register_error_handlers(flask_app)
 
     return flask_app
