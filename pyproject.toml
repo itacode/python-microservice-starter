@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{ include = "app" }]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.12"
 connexion = {extras = ["flask", "swagger-ui"], version = "^2.14.2"}
 python-dotenv = "^1.0.0"
 flask-cors = "^3.0.10"
