@@ -19,6 +19,6 @@ RUN groupadd -g 999 apiuser && \
 useradd -r -u 999 -g apiuser apiuser
 USER apiuser
 
-EXPOSE 5001
+EXPOSE 8000
 
-CMD python server.py
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

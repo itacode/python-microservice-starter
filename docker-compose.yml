@@ -10,7 +10,7 @@ services:
     container_name: ${CONTAINER_NAME}
     restart: always
     ports:
-      - "5001:5001"
+      - "8000:8000"
     volumes:
       - ./files:/usr/src/my_service/files
     env_file:

@@ -3,7 +3,7 @@ from dataclasses import asdict, dataclass
 from http import HTTPStatus
 from typing import Callable, Optional, Type, Union
 
-from flask import Flask
+from connexion import FlaskApp
 
 from app.exceptions.application_errors import (
     ApplicationError,
@@ -112,6 +112,6 @@ exception_to_handler: dict[Union[Type[Exception], int], Callable] = {
 }
 
 
-def register_error_handlers(app: Flask):
+def register_error_handlers(app: FlaskApp):
     for exception, handler in exception_to_handler.items():
-        app.register_error_handler(exception, handler)
+        app.add_error_handler(exception, handler)
