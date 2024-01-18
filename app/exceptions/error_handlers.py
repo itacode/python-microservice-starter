@@ -27,15 +27,14 @@ class ResponseBase:
 def handle_application_error(e: ApplicationError):
     http_status = HTTPStatus.INTERNAL_SERVER_ERROR
     logger.exception("application error.")
+    response_base = ResponseBase(
+        detail=repr(e),
+        status=http_status,
+        title=http_status.phrase,
+        code=e.code,
+    )
     return (
-        asdict(
-            ResponseBase(
-                detail=repr(e),
-                status=http_status,
-                title=http_status.phrase,
-                code=e.code,
-            )
-        ),
+        asdict(response_base),
         http_status,
     )
 
@@ -43,15 +42,14 @@ def handle_application_error(e: ApplicationError):
 def handle_resource_conflict_error(e: ResourceConflictError):
     http_status = HTTPStatus.CONFLICT
     logger.exception("resource conflict error.")
+    response_base = ResponseBase(
+        detail=repr(e),
+        status=http_status,
+        title=http_status.phrase,
+        code=e.code,
+    )
     return (
-        asdict(
-            ResponseBase(
-                detail=repr(e),
-                status=http_status,
-                title=http_status.phrase,
-                code=e.code,
-            )
-        ),
+        asdict(response_base),
         http_status,
     )
 
@@ -59,15 +57,14 @@ def handle_resource_conflict_error(e: ResourceConflictError):
 def handle_parameter_error(e: ParameterError):
     http_status = HTTPStatus.BAD_REQUEST
     logger.exception("parameter error.")
+    response_base = ResponseBase(
+        detail=repr(e),
+        status=http_status,
+        title=http_status.phrase,
+        code=e.code,
+    )
     return (
-        asdict(
-            ResponseBase(
-                detail=repr(e),
-                status=http_status,
-                title=http_status.phrase,
-                code=e.code,
-            )
-        ),
+        asdict(response_base),
         http_status,
     )
 
@@ -75,15 +72,14 @@ def handle_parameter_error(e: ParameterError):
 def handle_resource_not_found_error(e: ResourceNotFoundError):
     http_status = HTTPStatus.NOT_FOUND
     logger.exception("resource not found.")
+    response_base = ResponseBase(
+        detail=repr(e),
+        status=http_status,
+        title=http_status.phrase,
+        code=e.code,
+    )
     return (
-        asdict(
-            ResponseBase(
-                detail=repr(e),
-                status=http_status,
-                title=http_status.phrase,
-                code=e.code,
-            )
-        ),
+        asdict(response_base),
         http_status,
     )
 
@@ -91,14 +87,13 @@ def handle_resource_not_found_error(e: ResourceNotFoundError):
 def handle_exception(e: Exception):
     http_status = HTTPStatus.INTERNAL_SERVER_ERROR
     logger.exception("internal error.")
+    response_base = ResponseBase(
+        detail=repr(e),
+        status=http_status,
+        title=http_status.phrase,
+    )
     return (
-        asdict(
-            ResponseBase(
-                detail=repr(e),
-                status=http_status,
-                title=http_status.phrase,
-            )
-        ),
+        asdict(response_base),
         http_status,
     )
 
