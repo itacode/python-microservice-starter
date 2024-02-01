@@ -13,18 +13,18 @@ python-dotenv = "^1.0.0"
 flask-cors = "^4.0.0"
 flask-compress = "^1.13"
 pymysql = "^1.0.2"
-cryptography = "^41.0.2"
+cryptography = "^42.0.2"
 pandas = "^2.0.1"
 pydantic = "^2.0.2"
 sqlalchemy = "^2.0.4"
 pydantic-settings = "^2.0.1"
-uvicorn = {extras = ["standard"], version = "^0.26.0"}
+uvicorn = {extras = ["standard"], version = "^0.27.0.post1"}
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
-black = "^23.1.0"
+black = "^24.1.1"
 isort = "^5.10.1"
-pytest = "^7.2.0"
+pytest = "^8.0.0"
 
 [build-system]
 requires = ["poetry-core"]
