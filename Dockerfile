@@ -11,7 +11,7 @@ COPY server.py .
 COPY .env .
 COPY pyproject.toml .
 COPY poetry.lock .
-RUN pip install poetry==1.7 && \
+RUN pip install poetry==1.8 && \
 poetry export -f requirements.txt --output requirements.txt && \
 pip install -r requirements.txt
 
