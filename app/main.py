@@ -1,14 +1,15 @@
 import logging
+import logging.config
 import os
 
 import connexion
 from flask_compress import Compress
 from flask_cors import CORS
 
-from app.config import settings
+from app.config import logging_config, settings
 from app.exceptions.error_handlers import register_error_handlers
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logging.config.dictConfig(logging_config)
 
 
 app = connexion.App(__name__, specification_dir="./openapi/")
