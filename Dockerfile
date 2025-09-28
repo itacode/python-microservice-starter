@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM python:3.12
+FROM python:3.13
 
 RUN apt-get update && \
 apt-get upgrade -y && \
@@ -11,7 +11,8 @@ COPY server.py .
 COPY .env .
 COPY pyproject.toml .
 COPY poetry.lock .
-RUN pip install poetry==1.8 && \
+RUN pip install poetry==2.1.* && \
+poetry self add poetry-plugin-export && \
 poetry export -f requirements.txt --output requirements.txt && \
 pip install -r requirements.txt
 
