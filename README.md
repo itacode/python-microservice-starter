@@ -16,9 +16,6 @@ A boilerplate to start developing microservices.
 - ORM [SQLAlchemy](https://www.sqlalchemy.org/)
 - Data validator [Pydantic](https://pydantic-docs.helpmanual.io/)
 - Unit test framework [pytest](https://docs.pytest.org/en/7.1.x/contents.html)
-- Linter [Flake8](https://flake8.pycqa.org/en/latest/)
-- Code formatter [Black](https://black.readthedocs.io/en/stable/)
-- Imports sorter [isort](https://pycqa.github.io/isort/)
 
 ## Installation
 
