@@ -10,7 +10,7 @@ A boilerplate to start developing microservices.
 - API `app/api/openapi/api.oas.yml` designed following [OpenAPI Specification](https://swagger.io/specification/)
 - Interactive API documentation (Swagger UI) [http://localhost:8000/api/v1/my_service/ui](http://localhost:8000/api/v1/my_service/ui)
 - Environment variables file `.env` for the app configuration
-- Docker `docker-compose.yml` and `docker/Dockerfile` to run the prodution server
+- Docker `docker-compose.yml` and `docker/Dockerfile` to run the production server
 - Openapi generator [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) configured to generate clients
 - MySQL database with docker compose
 - ORM [SQLAlchemy](https://www.sqlalchemy.org/)
@@ -21,12 +21,12 @@ A boilerplate to start developing microservices.
 
 Visual Studio Code is the recommended editor, please install the recommended extensions in `.vscode/extensions.json`.
 
-Install [poetry](https://python-poetry.org/docs/#installation).
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
 Install required packages:
 
 ```shell
-poetry install
+uv sync
 ```
 
 ## Development
@@ -34,14 +34,12 @@ poetry install
 Start the development server with automatic reload:
 
 ```shell
-poetry shell
-dev
+uv run .\app\dev_server.py
 ```
 
 or
 
 ```shell
-poetry shell
 uvicorn app.main:app --reload
 ```
 
@@ -64,7 +62,6 @@ docker compose down
 ### Unit test
 
 ```shell
-poetry shell
 pytest
 ```
 
