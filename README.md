@@ -31,10 +31,10 @@ uv sync
 
 ## Development
 
-Start the development server with automatic reload:
+Run the development server with automatic restart
 
 ```shell
-uv run .\app\dev_server.py
+uv run dev
 ```
 
 or

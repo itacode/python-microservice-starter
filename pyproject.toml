@@ -18,6 +18,9 @@ dependencies = [
   "sqlalchemy>=2.0.41",
 ]
 
+[project.scripts]
+dev = "app.dev_server:start"
+
 [dependency-groups]
 dev = [
     "pytest>=9.0.2"
